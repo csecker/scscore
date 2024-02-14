@@ -95,9 +95,9 @@ class SCScorer():
 
     def _load_vars(self, weight_path):
         if weight_path.endswith('pickle'):
-            import cPickle as pickle
+            import pickle
             with open(weight_path, 'rb') as fid:
-                self.vars = pickle.load(fid)
+                self.vars = pickle.load(fid, encoding='bytes')
                 self.vars = [x.tolist() for x in self.vars]
         elif weight_path.endswith('json.gz'):
             with gzip.GzipFile(weight_path, 'r') as fin:    # 4. gzip
